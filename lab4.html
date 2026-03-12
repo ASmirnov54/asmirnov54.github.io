@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script>
+        var name;
+        var item;
+        var quantity=0;
+        now = new Date();
+        hour = now.getHours();
+        deliveryday = new Date();
+
+        alert("Hello! Welcome to our store.");
+
+        do {
+            name = window.prompt("Please enter your name");
+        } while (name == "" || name == "null")
+
+        do {
+            item = window.prompt("What item would you like to buy?");
+        } while (item == "" || item == "null")
+
+        do {
+            quantity = parseInt(window.prompt("How many would you like to buy?"));
+        } while (quantity <= 0 || quantity >= 100 || isNaN(quantity))
+
+        if (hour < 12) {
+            document.write("<h1> Good Morning ")
+        } else if (hour < 18) {
+            document.write("<h1> Good Afternoon ")
+        } else {
+            document.write("<h1> Good Evening ")
+        }
+        document.writeln(name + ",  Thank you for ordering! </h1>")
+
+        document.writeln("<h2>Your Order:</h2>")
+        document.writeln("<h3>"+ quantity + "x - " + item + "</h3>")
+
+        deliveryday.setDate(now.getDate() + 7)
+        document.writeln("<h2>Your order will arrive on " + (deliveryday.getMonth()+1) + "/" + deliveryday.getDate() + "/" + deliveryday.getFullYear())
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
