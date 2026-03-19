@@ -1,0 +1,149 @@
+<head>
+    <title>Lab 5</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container flex-column d-flex align-items-center justify-content-center vh-100 ">
+        <h1>Register</h1>
+        <p>Register now to get access to a Super Secret Product when it releases later!</p>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="John">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inputLastName">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Smith">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+            <label>Date of Birth</label>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inputMM">Month</label>
+                        <input type="text" class="form-control" id="inputMM" placeholder="MM">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inputDD">Day</label>
+                        <input type="text" class="form-control" id="inputDD" placeholder="DD">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inputYYYY">Year</label>
+                        <input type="text" class="form-control" id="inputYYYY" placeholder="YYYY">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+            <p class="" id="statusText"></p>
+        </form>
+    </div>
+</body>
+
+<script>
+    const user = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        birthDate: ""
+    }
+    function submitForm() {
+        // User info
+        var inputFirstName = document.getElementById("inputFirstName");
+        var inputLastName = document.getElementById("inputLastName");
+        var inputEmail = document.getElementById("inputEmail");
+        var inputPassword = document.getElementById("inputPassword");
+        // Date of Birth inputs
+        var inputMM = document.getElementById("inputMM");
+        var inputDD = document.getElementById("inputDD");
+        var inputYYYY = document.getElementById("inputYYYY");
+
+        // Validity checks
+        var errorText = document.getElementById("statusText");
+        errorText.classList = "text-danger";
+        if (inputFirstName.value == "") {
+            errorText.innerText = "Please enter your First Name";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputLastName.value == "") {
+            errorText.innerText = "Please enter your Last Name";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputEmail.value == "") {
+            errorText.innerText = "Please enter your Email";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputPassword.value == "") {
+            errorText.innerText = "Please enter your Password";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (!inputPassword.value.includes('!') && !inputPassword.value.includes('?')) {
+            errorText.innerText = "Password must contain special character ! or ?";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputMM.value == "") {
+            errorText.innerText = "Please enter your Birth Month";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputDD.value == "") {
+            errorText.innerText = "Please enter your Birth Day";
+            return;
+        } else { errorText.innerText = ""; }
+
+        if (inputYYYY.value == "") {
+            errorText.innerText = "Please enter your Birth Year";
+            return;
+        } else { errorText.innerText = ""; }
+
+        // Registration successful from this point
+        // set user object
+        user.firstName = inputFirstName.value;
+        user.lastName = inputLastName.value;
+        user.email = inputEmail.value;
+        user.password = inputPassword.value.replace(/./g, "*");
+        user.birthDate = inputMM.value + "/" + inputDD.value + "/" + inputYYYY.value;
+
+        errorText.classList = "text-success";
+        errorText.innerText = "Registration Success!";
+
+        // Write to the document
+        document.write("<h1>Registration Successful!</h1>");
+        document.write(`<h2>Name: ${user.firstName} ${user.lastName}</h2>`);
+        document.write(`<h2>Email: ${user.email}</h2>`);
+        document.write(`<h2>Password: ${user.password}</h2>`);
+        document.write(`<h2>Date of Birth: ${user.birthDate}</h2>`);
+    }
+</script>
