@@ -1,0 +1,51 @@
+<head>
+    <title>Lab 6</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="container mt-4">
+    <div class="row">
+        <h1>Lab 6 - Consuming a REST API</h1>
+        <h2>Cat Facts!</h2>
+    </div>
+    <img id="catImage"
+        src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_16x9.jpg?w=1200"
+        alt="Cat" width="300">
+    <div class="row">
+        <button class="btn btn-primary" onclick="getData()">Get Cat Facts</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>factId</th>
+                <th>fact</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+</body>
+
+<script>
+    async function getData() {
+        const response = await fetch("https://brianobruno.github.io/cats.json");
+        const data = await response.json();
+        // update the image
+        document.getElementById("catImage").src = data.catPhoto;
+        // sort the facts by factId
+        data.facts.sort((a, b) => a.factId - b.factId);
+        // add to the table
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = ""; // if the button is pressed many times it will clear and not stack
+        for (let i = 0; i < data.facts.length; i++) {
+            tbody.innerHTML += `<tr><td>${data.facts[i].factId}</td><td>${data.facts[i].text}</td></tr>`;
+        }
+    }
+</script>
