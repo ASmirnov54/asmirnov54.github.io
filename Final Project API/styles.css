@@ -1,0 +1,295 @@
+body {
+    background: linear-gradient(135deg, #0772b9, #071961);
+    background-attachment: fixed;
+    height: 1vh;
+}
+
+@font-face {
+  font-family: 'HN 67 EB';
+  src: url(fonts/HeadingNow/HeadingNow_67ExtraBold.ttf);
+}
+@font-face {
+  font-family: 'HN 74 R';
+  src: url(fonts/HeadingNow/HeadingNow_74Regular.ttf);
+}
+@font-face {
+  font-family: 'HN 75 M';
+  src: url(fonts/HeadingNow/HeadingNow_75Medium.ttf);
+}
+@font-face {
+  font-family: 'HN 75 MI';
+  src: url(fonts/HeadingNow/HeadingNow_75MediumItalic.ttf);
+}
+@font-face {
+  font-family: 'HN 76 B';
+  src: url(fonts/HeadingNow/HeadingNow_76Bold.ttf);
+}
+@font-face {
+  font-family: 'HN 76 BI';
+  src: url(fonts/HeadingNow/HeadingNow_76BoldItalic.ttf);
+}
+@font-face {
+  font-family: 'HN 86 B';
+  src: url(fonts/HeadingNow/HeadingNow_86Bold.ttf);
+}
+@font-face {
+  font-family: 'HN 86 BI';
+  src: url(fonts/HeadingNow/HeadingNow_86BoldItalic.ttf);
+}
+
+.SectionTitle {
+    font-family: "HN 86 BI";
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.section {
+    margin-top: clamp(1rem, 5vw, 2.5rem);
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.shoptile {
+    width: 25%;
+    aspect-ratio: 350 / 450;
+    height: auto;
+    overflow: visible;
+    position: relative;
+    border-radius: 1rem;
+    border: none;
+    overflow-x: clip;
+    margin: 0;
+    padding: 0;
+    transition: filter 0.07s ease;
+}
+
+.largetile {
+    width: 50%;
+    aspect-ratio: 700 / 450;
+}
+.wideishtile {
+    width: 75%;
+    aspect-ratio: 1050 / 450;
+}
+.widetile {
+    width: 100%;
+    aspect-ratio: 1400 / 450;
+}
+.shoptile:hover.itemtile .featuredimg {
+    height: 100%;
+    filter: brightness(1.05); 
+}
+
+.featuredimg {
+    height: 100%;
+    border-radius: 1rem;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    transition: height 0.07s ease, width 0.07s ease, filter 0.07s ease;
+    user-select: none;
+}
+.widetile .featuredimg {
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, 50%);
+    clip-path: inset(0 0 50% 0);
+}
+.shoptile:hover.widetile .featuredimg {
+    width: 85%;
+    height: auto;
+    filter: brightness(1.05); 
+}
+.shoptile.cartile {
+    overflow: clip;
+}
+.cartile .featuredimg {
+    width: 100%;
+    height: auto;
+    transform: translate(-50%, 25%);
+    clip-path: unset;
+}
+.shoptile:hover.cartile .featuredimg {
+    width: 100%;
+    height: auto;
+    filter: brightness(1.05); 
+}
+.jamtile .featuredimg {
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, -50%);
+}
+.shoptile:hover.jamtile .featuredimg {
+    width: 85%;
+    height: auto;
+    transform: translate(-50%, -50%);
+}
+
+.shoptile:hover {
+    outline: solid 3px white;
+    outline-offset: 5px;
+    filter: brightness(1.04); 
+}
+
+.shoptile:hover .featuredimg {
+    height: 110%;
+    filter: brightness(1.05); 
+}
+
+.shopiteminfobackground {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 45%;
+    z-index: 1;
+    border-radius: 1rem;
+}
+.shopiteminfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: 2;
+    color: white;
+    margin-left: 10px;
+    width: 96%;
+    user-select: none;
+}
+.itemname {
+    font-size: clamp(0.5rem, 2vw, 1.5rem);
+    font-family: 'HN 74 R';
+    white-space: nowrap;
+    overflow-x: clip;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
+}
+.shoptile:hover .itemname {
+    white-space: unset;
+}
+.itemtype {
+    font-family: 'HN 74 R';
+    font-size: clamp(0.2rem, 2vw, 1rem);
+    position: absolute;
+    visibility: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.shoptile:hover .itemtype {
+    position: relative;
+    visibility: visible;
+}
+.itemtype-ao {
+    position: relative;
+    visibility: visible;
+}
+
+.itemprice {
+    font-size: clamp(0.3rem, 2vw, 1.2rem);
+    font-family: 'HN 74 R';
+    height: clamp(0.3rem, 2vw, 1.3rem);;
+    font-weight: 500;
+}
+.bundleprice {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: clamp(0.2rem, 2vw, 1.1rem);
+    transform: translateY(1px);
+}
+
+.shoptilebanner {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding-left: clamp(0.3rem, 1.5vw, 1rem);
+    padding-right: clamp(0.3rem, 1.5vw, 1rem);
+    padding-top: clamp(0.05rem, 1.5vw, 0.2rem);
+    padding-bottom: clamp(0.05rem, 1.5vw, 0.2rem);
+    margin: 0;
+    margin-bottom: 1%;
+    font-family: 'HN 75 MI';
+    font-size: clamp(0.1rem, 1.5vw, 1rem);
+    border-radius: 10rem;
+    text-transform: uppercase;
+}
+
+.itemtile{
+    width: clamp(5%, 15vw, 90%);
+    aspect-ratio: 450 / 550;
+    height: auto;
+    overflow: hidden;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.FID-itemname {
+    font-family: "HN 86 BI";
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 100%;
+}
+
+.FID-itemtype {
+    font-family: 'HN 74 R';
+    color: #ffffffb5;
+    font-size: clamp(0.5rem, 2vw, 1rem);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.FID-itemdescription {
+    font-family: 'HN 74 R';
+    color: white;
+    font-size: clamp(0.6rem, 2vw, 1.1rem);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.FID-subinfo {
+    font-family: 'HN 74 R';
+    color: white;
+    font-size: clamp(0.6rem, 2vw, 1.1rem);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+bold {
+    font-weight: bold;
+}
+
+.FID-featured {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.closebutton {
+    background-color: rgba(255, 255, 255, 0.496);
+    border: none;
+    border-radius: 10px;
+    font-family: "HN 76 B";
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: clamp(0.5rem, 3vw, 1.2rem);
+}
+
+.sideitemlist {
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: visible;
+}
